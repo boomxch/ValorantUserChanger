@@ -1,0 +1,121 @@
+﻿<Window x:Class="ValorantUserChanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValorantUserChanger"
+        mc:Ignorable="d"
+        Title="ValorantUserChanger" Height="300" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFB2B2B2" Offset="1"/>
+                <GradientStop Color="#FFDEDEDE" Offset="0.545"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="設定(_O)">
+                <MenuItem Header="設定フォルダ変更..." Click="ChangeSettingFileDirectoryMenuClick"/>
+                <MenuItem Header="アプリケーションファイル変更..." Click="ChangeAppFileDirectoryMenuClick"/>
+            </MenuItem>
+            <MenuItem Header="ヘルプ(_H)">
+                <MenuItem Header="バージョン情報"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <RadioButton x:Name="ToggleStyledRadioButton2" Style="{StaticResource {x:Type ToggleButton} }" Visibility="Hidden" Grid.ColumnSpan="2" />
+            <RadioButton x:Name="ToggleStyledRadioButton" Style="{StaticResource {x:Type ToggleButton} }" Visibility="Hidden"
+                         Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+                <ToggleButton.Template>
+                    <ControlTemplate  TargetType="ToggleButton">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Transparent">
+                            <Border.Background>
+                                <ImageBrush ImageSource="Resources/folder.png" />
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" >
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Resources/folder3.png" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter TargetName="border" Property="Background" >
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Resources/folder2.png" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+            </RadioButton>
+            <Border BorderThickness="1" BorderBrush="#19BFBFBF" Grid.Row="0"
+                    Grid.Column="0" Grid.RowSpan="4">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="UserDataStackPanel" Background="#18FFFFFF" />
+                </ScrollViewer>
+            </Border>
+            <Button Name="UserChangeButton" Content="ユーザー追加" Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" xml:space="preserve" Click="UserChangeButtonClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Name="UserAddButton" Content="ユーザー変更" Grid.Column="3" Grid.Row="1" Margin="3,3,3,3" xml:space="preserve" Click="UserAddButtonClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Name="StartGameButton" Content="Valorant起動" Grid.Column="3" Grid.Row="2" Margin="3,3,3,3" xml:space="preserve" Click="StartGameButtonClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Name="LogoutButton" Content="Valorant&#10;ログアウト" Grid.Column="3" Grid.Row="4" Margin="3,3,3,3" xml:space="preserve" Click="LogoutButtonClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
