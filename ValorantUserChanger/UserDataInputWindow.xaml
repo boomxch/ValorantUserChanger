@@ -28,22 +28,8 @@
         <TextBlock Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" TextWrapping="NoWrap" Text="ユーザー表示名" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Background="#00000000"/>
         <TextBox x:Name="UserDataNameTextBox" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" TextWrapping="NoWrap" Text="" FontSize="15" Margin="5,11" Background="White" MaxLength="12"/>
         <Button x:Name="UserDataNameInitializeButton" Content="初期化" Grid.Row="0" Grid.Column="3" Margin="3,10" Click="UserDataNameInitializeButtonClick">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#FFD4D4D4" Offset="0.984"/>
-                    <GradientStop Color="#FFD4D4D4"/>
-                    <GradientStop Color="#FEFFFFFF" Offset="0.502"/>
-                </LinearGradientBrush>
-            </Button.Background>
         </Button>
         <Button x:Name="UserDataSaveButton" Content="保存" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="3,10">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#FFD4D4D4" Offset="0.984"/>
-                    <GradientStop Color="#FFD4D4D4"/>
-                    <GradientStop Color="#FEFFFFFF" Offset="0.502"/>
-                </LinearGradientBrush>
-            </Button.Background>
         </Button>
 
     </Grid>

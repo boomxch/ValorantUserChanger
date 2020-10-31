@@ -1,0 +1,12 @@
+.vs/
+packages/
+obj/
+Properties/
+Debug/
+*.user
+*.pfx
+*.pdb
+**/Release/*.xml
+**/Release/*.application
+**/Release/*.config
+**/Release/*.manifest

@@ -16,15 +16,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFB2B2B2" Offset="1"/>
-                <GradientStop Color="#FFDEDEDE" Offset="0.545"/>
-                <GradientStop Color="White"/>
-            </LinearGradientBrush>
-        </Grid.Background>
 
-        <Menu Grid.ColumnSpan="2">
+        <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" FontSize="12" Margin="0,-10,0,0" Height="37">
             <MenuItem Header="設定(_O)">
                 <MenuItem Header="設定フォルダ変更..." Click="ChangeSettingFileDirectoryMenuClick"/>
                 <MenuItem Header="アプリケーションファイル変更..." Click="ChangeAppFileDirectoryMenuClick"/>
@@ -80,41 +73,12 @@
                     <WrapPanel x:Name="UserDataStackPanel" Background="#18FFFFFF" />
                 </ScrollViewer>
             </Border>
-            <Button Name="UserChangeButton" Content="ユーザー追加" Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" xml:space="preserve" Click="UserChangeButtonClick">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button Name="UserChangeButton" Content="ユーザー追加" Grid.Row="0" Grid.Column="1" xml:space="preserve" Click="UserChangeButtonClick" Margin="3,0,3,0" Cursor="Hand" FontSize="8"/>
+            <Button Name="UserAddButton" Content="ユーザー変更" Grid.Column="3" Grid.Row="1" Margin="3,0,3,0" xml:space="preserve" Click="UserAddButtonClick" FontSize="8">
             </Button>
-            <Button Name="UserAddButton" Content="ユーザー変更" Grid.Column="3" Grid.Row="1" Margin="3,3,3,3" xml:space="preserve" Click="UserAddButtonClick">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button Name="StartGameButton" Content="Valorant起動" Grid.Column="3" Grid.Row="2" Margin="3,0,3,0" xml:space="preserve" Click="StartGameButtonClick" FontSize="8">
             </Button>
-            <Button Name="StartGameButton" Content="Valorant起動" Grid.Column="3" Grid.Row="2" Margin="3,3,3,3" xml:space="preserve" Click="StartGameButtonClick">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-            <Button Name="LogoutButton" Content="Valorant&#10;ログアウト" Grid.Column="3" Grid.Row="4" Margin="3,3,3,3" xml:space="preserve" Click="LogoutButtonClick">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FFC9C9C9" Offset="0.569"/>
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button Name="LogoutButton" Content="Valorant&#10;自動ログイン解除" Grid.Column="3" Grid.Row="4" Margin="3,3,3,0" xml:space="preserve" Click="LogoutButtonClick" FontSize="8">
             </Button>
         </Grid>
     </Grid>
