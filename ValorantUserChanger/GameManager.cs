@@ -6,7 +6,6 @@ namespace ValorantUserChanger
 {
     class GameManager
     {
-        private const string ApplicationShortcut = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\VALORANT.lnk";
         private const string ProcessName = "VALORANT-Win64-Shipping";
 
         // アプリケーションのスタート cmdを経由しないと実行できない?

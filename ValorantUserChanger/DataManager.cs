@@ -57,7 +57,18 @@ namespace ValorantUserChanger
 
         internal static UserData LoadData()
         {
-            if (!File.Exists(FilePath)) return new UserData();
+            try
+            {
+                if (!Directory.Exists("data"))
+                    Directory.CreateDirectory("data");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("dataフォルダを作成することが出来ませんでした。");
+            }
+
+            if (!File.Exists(FilePath))
+                return new UserData();
 
             var serializer = new XmlSerializer(typeof(UserData));
             var sr = new StreamReader(FilePath, new UTF8Encoding(false));
