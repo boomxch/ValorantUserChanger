@@ -25,7 +25,15 @@ namespace ValorantUserChanger
 
         private void UpdateUserButton_Click(object sender, RoutedEventArgs e) => wl.UpdateUserDataField(UserDataStackPanel, ToggleStyledRadioButton, ToggleStyledRadioButton_MouseRightButtonUp);
 
-        private void ChangeUserButton_Click(object sender, RoutedEventArgs e) => wl.ChangeUser(((RadioButton)sender).Tag.ToString());
+        private void ChangeUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (RadioButton child in UserDataStackPanel.Children)
+            {
+                if (child.IsChecked == null || !(bool)child.IsChecked) continue;
+                wl.ChangeUser(child.Tag.ToString());
+                return;
+            }
+        }
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e) => wl.StartGame();
 
