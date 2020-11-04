@@ -41,7 +41,7 @@ namespace ValorantUserChanger
                     Height = parentPanel.ActualWidth / 5,
                     Background = isFileExist ? new ImageBrush(new BitmapImage(new Uri(@"Resources/folder.png", UriKind.Relative))) : new ImageBrush(new BitmapImage(new Uri(@"Resources/folder4.png", UriKind.Relative))),
                     FontSize = parentPanel.ActualWidth / 40,
-                    Foreground = Brushes.Black,
+                    Foreground = isFileExist ? Brushes.Black : Brushes.Red,
                     Content = userName.Length > 12 ? userName.Substring(0, 12) + "..." : userName
                 };
 
@@ -54,7 +54,11 @@ namespace ValorantUserChanger
         {
             var userData = um.GetUserData();
             foreach (RadioButton child in parentPanel.Children)
-                child.Content = userData.First(v => v.guid == child.Tag.ToString()).userName;
+            {
+                var (_, userName, isFileExist) = userData.First(v => v.guid == child.Tag.ToString());
+                child.Content = userName;
+                child.Foreground = isFileExist ? Brushes.Black : Brushes.Red;
+            }
         }
 
         public void UpdateUserDataFieldSize(Panel parentPanel)

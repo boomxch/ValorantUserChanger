@@ -26,7 +26,7 @@ namespace ValorantUserChanger
             // data.xml からロード
             foreach (var data in userData.user_data)
             {
-                var path = Path.GetDirectoryName(DataManager.FilePath) + data.guid + ".yaml";
+                var path = Path.GetDirectoryName(DataManager.FilePath) + @"\" + data.guid + ".yaml";
                 _userDataTuples.Add((data.guid, data.user_name, File.Exists(path)));
             }
 
@@ -49,11 +49,11 @@ namespace ValorantUserChanger
             // yamlファイルからguidを抜き出す(どのユーザのデータかを判定)
             var yaml = File.ReadAllLines(source).Aggregate((v, d) => v + d);
             var match = Regex.Match(yaml, @"""(?<guid>\w{8}-\w{4}-\w{4}-\w{4}-\w{12})""");
-            if (match.Groups.Count == 0) return;
+            if (match.Groups["guid"].Captures.Count == 0) return;
 
             var guid = match.Groups["guid"].Captures.First().Value;
 
-            var dest = Path.GetDirectoryName(DataManager.FilePath) + guid + ".yaml";
+            var dest = Path.GetDirectoryName(DataManager.FilePath) + @"\" + guid + ".yaml";
             File.Copy(source, dest, true);
 
             var id = _userDataTuples.FindIndex(v => v.guid == guid);
@@ -66,7 +66,7 @@ namespace ValorantUserChanger
         {
             if (!_userDataTuples.Any(v => v.guid == guid && v.isFileExist)) return;
 
-            var source = Path.GetDirectoryName(DataManager.FilePath) + guid + ".yaml";
+            var source = Path.GetDirectoryName(DataManager.FilePath) + @"\" + guid + ".yaml";
             var dest = DataPath + AutoLoginFileName;
             File.Copy(source, dest, true);
         }

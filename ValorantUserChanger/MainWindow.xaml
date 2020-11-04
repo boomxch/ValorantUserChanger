@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValorantUserChanger"
         mc:Ignorable="d"
-        Title="ValorantUserChanger" Height="300" Width="400">
+        Title="ValorantUserChanger" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
