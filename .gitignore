@@ -1,8 +1,7 @@
 .vs/
-packages/
 obj/
 Properties/
-Debug/
+bin/
 *.user
 *.pfx
 *.pdb
