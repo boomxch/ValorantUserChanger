@@ -11,6 +11,7 @@
     <None Remove="Resources\folder.png" />
     <None Remove="Resources\folder2.png" />
     <None Remove="Resources\folder3.png" />
+    <None Remove="Resources\folder4.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,9 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\folder.png" />
-    <Resource Include="Resources\folder2.png" />
-    <Resource Include="Resources\folder3.png" />
+    <Resource Include="Resources\folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\folder2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\folder3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\folder4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

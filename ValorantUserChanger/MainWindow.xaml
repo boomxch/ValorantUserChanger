@@ -5,31 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValorantUserChanger"
         mc:Ignorable="d"
-        Title="ValorantUserChanger" Height="300" Width="400" ResizeMode="NoResize">
+        Title="ValorantUserChanger" Height="300" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
         <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" FontSize="12" Margin="0,-10,0,0" Height="37">
             <MenuItem Header="設定(_O)">
-                <MenuItem Header="設定フォルダ変更..." Click="ChangeSettingFileDirectoryMenuClick"/>
-                <MenuItem Header="アプリケーションファイル変更..." Click="ChangeAppFileDirectoryMenuClick"/>
+                <MenuItem x:Name="ChangeSettingFolderMenuItem" Header="設定フォルダ変更..." Click="ChangeSettingFolderMenuItem_Click"/>
+                <MenuItem x:Name="ChangeApplicationFileMenuItem" Header="アプリケーションファイル変更..." Click="ChangeApplicationFileMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="ヘルプ(_H)">
-                <MenuItem Header="バージョン情報"/>
+                <MenuItem x:Name="ShowVersionInformationMenuItem" Header="バージョン情報..." Click="ShowVersionInformationMenuItem_Click"/>
             </MenuItem>
         </Menu>
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="273*"/>
+                <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -37,9 +36,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <RadioButton x:Name="ToggleStyledRadioButton2" Style="{StaticResource {x:Type ToggleButton} }" Visibility="Hidden" Grid.ColumnSpan="2" />
-            <RadioButton x:Name="ToggleStyledRadioButton" Style="{StaticResource {x:Type ToggleButton} }" Visibility="Hidden"
-                         Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+            <RadioButton x:Name="ToggleStyledRadioButton" Style="{StaticResource {x:Type ToggleButton} }" Visibility="Hidden">
                 <ToggleButton.Template>
                     <ControlTemplate  TargetType="ToggleButton">
                         <Border Name="border" BorderThickness="0" BorderBrush="Transparent">
@@ -68,18 +65,15 @@
                 </ToggleButton.Template>
             </RadioButton>
             <Border BorderThickness="1" BorderBrush="#19BFBFBF" Grid.Row="0"
-                    Grid.Column="0" Grid.RowSpan="4">
+                    Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                    <WrapPanel x:Name="UserDataStackPanel" Background="#18FFFFFF" />
+                    <WrapPanel x:Name="UserDataStackPanel" Background="#18FFFFFF"/>
                 </ScrollViewer>
             </Border>
-            <Button Name="UserChangeButton" Content="ユーザー追加" Grid.Row="0" Grid.Column="1" xml:space="preserve" Click="UserChangeButtonClick" Margin="3,0,3,0" Cursor="Hand" FontSize="8"/>
-            <Button Name="UserAddButton" Content="ユーザー変更" Grid.Column="3" Grid.Row="1" Margin="3,0,3,0" xml:space="preserve" Click="UserAddButtonClick" FontSize="8">
-            </Button>
-            <Button Name="StartGameButton" Content="Valorant起動" Grid.Column="3" Grid.Row="2" Margin="3,0,3,0" xml:space="preserve" Click="StartGameButtonClick" FontSize="8">
-            </Button>
-            <Button Name="LogoutButton" Content="Valorant&#10;自動ログイン解除" Grid.Column="3" Grid.Row="4" Margin="3,3,3,0" xml:space="preserve" Click="LogoutButtonClick" FontSize="8">
-            </Button>
+            <Button x:Name="UpdateUserButton" Content="ユーザ更新" Grid.Row="0" Grid.Column="2" xml:space="preserve" Margin="3,16,3,16" FontSize="9" Click="UpdateUserButton_Click" Cursor="Hand"/>
+            <Button x:Name="ChangeUserButton" Content="ユーザ変更" Grid.Column="2" Grid.Row="1" Margin="3,16,3,17" xml:space="preserve" FontSize="9" Click="ChangeUserButton_Click"/>
+            <Button Name="StartGameButton" Content="Valorant&#10;   起動" Grid.Column="2" Grid.Row="2" Margin="3,16,3,16" xml:space="preserve" FontSize="9" Click="StartGameButton_Click"/>
+            <Button Name="LogoutButton" Content="Valorant&#10;ログアウト" Grid.Column="2" Grid.Row="3" Margin="3,17,3,15" xml:space="preserve" FontSize="9" Click="LogoutButton_Click"/>
         </Grid>
     </Grid>
 </Window>

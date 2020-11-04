@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ValorantUserChanger
 {
@@ -8,52 +9,24 @@ namespace ValorantUserChanger
     /// </summary>
     public partial class UserDataInputWindow : Window
     {
-        public UserDataInputWindow()
-        {
-            this.InitializeComponent();
-        }
+        private WindowLogic wl;
 
-        /// <summary>
-        /// ユーザーデータを取得し、Dictionary形式で返す
-        /// </summary>
-        /// <param name="userDataPropertyName">
-        /// The user Data Property Name.
-        /// </param>
-        /// <returns>
-        /// Dictionary形式のディレクトリパスのデータ Key:userDataPropertyNameなどの項目名、Value:実際の値
-        /// </returns>
-        public Dictionary<string, string> GetUserData(string[] userDataPropertyName)
+        public UserDataInputWindow(WindowLogic instance)
         {
-            var userData = new Dictionary<string, string>
-            {
-                {
-                    userDataPropertyName[0],
-                    this.UserDataNameTextBox.Text
-                },
-            };
+            InitializeComponent();
 
-            return userData;
+            wl = instance;
         }
 
         private void UserDataNameInitializeButtonClick(object sender, RoutedEventArgs e)
         {
-            if (this.Tag != null)
-            {
-                this.UserDataNameTextBox.Text = this.Tag.ToString().Substring(0, 8);
-            }
+            UserNameTextBox.Text = Tag.ToString();
         }
 
-        private void UserDataAllInitializeButtonClick(object sender, RoutedEventArgs e)
+        private void UserDataSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Tag != null)
-            {
-                this.UserDataNameTextBox.Text = this.Tag.ToString().Substring(0, 8);
-            }
-        }
-
-        private void UserDataCloseButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            wl.ChangeUserName(Tag.ToString(), UserNameTextBox.Text);
+            Close();
         }
     }
 }
