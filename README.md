@@ -10,7 +10,7 @@ Change user account by replacing "RiotClientPrivateSettings.yaml".
 ![画像1](https://user-images.githubusercontent.com/6965987/98113135-91a8c400-1ee6-11eb-9f43-87c97442ae4d.png)
 - 赤文字で表示されているユーザはまだ設定が済んでいない状態
 - 初期状態だと、ユーザ名がguidで表示されている
-  - 名前を変える場合は(#カスタマイズ)の項を参照
+  - 名前を変える場合は([カスタマイズ](#カスタマイズ))の項を参照
 2. `Valorantを起動`ボタンでValorantを起動する
 3. 設定が済んでいないユーザで、**`サインイン状態を維持`にチェックを入れた状態で**ログインする
 4. その後、ValorantUserChangerに戻り、`ユーザ更新`ボタンを押す
