@@ -42,7 +42,7 @@ namespace ValorantUserChanger
                     Background = isFileExist ? new ImageBrush(new BitmapImage(new Uri(@"Resources/folder.png", UriKind.Relative))) : new ImageBrush(new BitmapImage(new Uri(@"Resources/folder4.png", UriKind.Relative))),
                     FontSize = parentPanel.ActualWidth / 40,
                     //Foreground = isFileExist ? Brushes.Black : Brushes.Red,
-                    Foreground = password != "" ? Brushes.Black : Brushes.Red,
+                    Foreground = !string.IsNullOrEmpty(password) ? Brushes.Black : Brushes.Red,
                     Content = userName.Length > 12 ? userName.Substring(0, 12) + "..." : userName
                 };
 
@@ -57,9 +57,9 @@ namespace ValorantUserChanger
             foreach (RadioButton child in parentPanel.Children)
             {
                 var (_, userName, password, isFileExist) = userData.First(v => v.guid == child.Tag.ToString());
-                child.Content = userName;
+                child.Content = userName.Length > 12 ? userName.Substring(0, 12) + "..." : userName;
                 //child.Foreground = isFileExist ? Brushes.Black : Brushes.Red;
-                child.Foreground = password != "" ? Brushes.Black : Brushes.Red;
+                child.Foreground = !string.IsNullOrEmpty(password) ? Brushes.Black : Brushes.Red;
             }
         }
 
@@ -108,7 +108,9 @@ namespace ValorantUserChanger
             };
 
             var userName = um.GetUserNameFromGuid(tag);
+            var password = um.GetUserPasswordFromGuid(tag);
             udiw.UserNameTextBox.Text = userName;
+            udiw.PasswordTextBox.Password = password;
             udiw.Closed += (s, a) => UpdateUserDataFieldName(parentPanel);
 
             udiw.ShowDialog();
