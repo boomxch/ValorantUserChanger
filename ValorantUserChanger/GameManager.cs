@@ -40,8 +40,10 @@ namespace ValorantUserChanger
             {
                 await Task.Delay(1000);
                 var pc = Process.GetProcessesByName("RiotClientServices");
-                if (!pc.Any()) continue;
+                var pc2 = Process.GetProcessesByName("RiotClientUx");
+                if (!pc.Any() || !pc2.Any()) continue;
 
+                await Task.Delay(1000);
                 WindowManager.ActiveWindow(pc.First().MainWindowHandle);
                 SendKeys.SendWait(userName + "{TAB}" + password + "{ENTER}");
                 break;
