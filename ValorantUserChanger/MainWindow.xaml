@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValorantUserChanger"
         mc:Ignorable="d"
-        Title="ValorantUserChanger" Height="400" Width="500">
+        Title="ValorantUserChanger" Height="350" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,7 +31,6 @@
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -71,9 +70,9 @@
                 </ScrollViewer>
             </Border>
             <Button x:Name="UpdateUserButton" Content="ユーザ更新" Grid.Row="0" Grid.Column="2" xml:space="preserve" Margin="3,16,3,16" FontSize="9" Click="UpdateUserButton_Click" Cursor="Hand"/>
-            <Button x:Name="ChangeUserButton" Content="ユーザ変更" Grid.Column="2" Grid.Row="1" Margin="3,16,3,17" xml:space="preserve" FontSize="9" Click="ChangeUserButton_Click"/>
-            <Button Name="StartGameButton" Content="Valorant&#10;   起動" Grid.Column="2" Grid.Row="2" Margin="3,16,3,16" xml:space="preserve" FontSize="9" Click="StartGameButton_Click"/>
-            <Button Name="LogoutButton" Content="Valorant&#10;ログアウト" Grid.Column="2" Grid.Row="3" Margin="3,17,3,15" xml:space="preserve" FontSize="9" Click="LogoutButton_Click"/>
+            <!--<Button x:Name="ChangeUserButton" Content="ユーザ変更" Grid.Column="2" Grid.Row="1" Margin="3,16,3,17" xml:space="preserve" FontSize="9" Click="ChangeUserButton_Click" Cursor="Hand"/>-->
+            <Button Name="StartGameButton" Content="Valorant&#10;   起動" Grid.Column="2" Grid.Row="1" Margin="3,16,3,16" xml:space="preserve" FontSize="9" Click="StartGameButton_Click"/>
+            <Button Name="LogoutButton" Content="Valorant&#10;ログアウト" Grid.Column="2" Grid.Row="2" Margin="3,17,3,15" xml:space="preserve" FontSize="9" Click="LogoutButton_Click"/>
         </Grid>
     </Grid>
 </Window>

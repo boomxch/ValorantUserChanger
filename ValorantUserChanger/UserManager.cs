@@ -16,18 +16,18 @@ namespace ValorantUserChanger
                                              @"\VALORANT\Saved\Config";
         private readonly string DataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
                                              @"\Riot Games\Riot Client\Data";
-        private readonly List<(string guid, string userName, bool isFileExist)> _userDataTuples;
+        private readonly List<(string guid, string userName, string password, bool isFileExist)> _userDataTuples;
 
         public UserManager()
         {
-            _userDataTuples = new List<(string guid, string userName, bool isFileExist)>();
+            _userDataTuples = new List<(string guid, string userName, string password, bool isFileExist)>();
             var userData = DataManager.LoadData();
 
             // data.xml からロード
             foreach (var data in userData.user_data)
             {
                 var path = Path.GetDirectoryName(DataManager.FilePath) + @"\" + data.guid + ".yaml";
-                _userDataTuples.Add((data.guid, data.user_name, File.Exists(path)));
+                _userDataTuples.Add((data.guid, data.user_name, data.password, File.Exists(path)));
             }
 
             // Configに新たなユーザが存在する場合、追加
@@ -37,7 +37,7 @@ namespace ValorantUserChanger
                 if (!Guid.TryParse(folderName, out var guid) || userData.user_data.Select(v => v.guid).Any(v => v == guid.ToString())) continue;
 
                 // guidを名前として追加
-                _userDataTuples.Add((guid.ToString(), guid.ToString(), false));
+                _userDataTuples.Add((guid.ToString(), guid.ToString(), "", false));
             }
         }
 
@@ -57,7 +57,7 @@ namespace ValorantUserChanger
             File.Copy(source, dest, true);
 
             var id = _userDataTuples.FindIndex(v => v.guid == guid);
-            _userDataTuples[id] = (_userDataTuples[id].guid, _userDataTuples[id].userName, true);
+            _userDataTuples[id] = (_userDataTuples[id].guid, _userDataTuples[id].userName, _userDataTuples[id].password, true);
 
             SaveUserData();
         }
@@ -71,10 +71,10 @@ namespace ValorantUserChanger
             File.Copy(source, dest, true);
         }
 
-        public void ChangeUserName(string guid, string newUserName)
+        public void ChangeUserData(string guid, string userName, string password)
         {
             var id = _userDataTuples.FindIndex(v => v.guid == guid);
-            _userDataTuples[id] = (_userDataTuples[id].guid, newUserName, _userDataTuples[id].isFileExist);
+            _userDataTuples[id] = (_userDataTuples[id].guid, userName, password, _userDataTuples[id].isFileExist);
             SaveUserData();
         }
 
@@ -83,7 +83,7 @@ namespace ValorantUserChanger
             File.Delete(DataPath + AutoLoginFileName);
         }
 
-        public IReadOnlyCollection<(string guid, string userName, bool isFileExist)> GetUserData()
+        public IReadOnlyCollection<(string guid, string userName, string password, bool isFileExist)> GetUserData()
         {
             return _userDataTuples;
         }
@@ -94,6 +94,12 @@ namespace ValorantUserChanger
             return data.Any() ? data.First().userName : string.Empty;
         }
 
+        public string GetUserPasswordFromGuid(string guid)
+        {
+            var data = _userDataTuples.Where(v => v.guid == guid);
+            return data.Any() ? data.First().password : string.Empty;
+        }
+
         // 変更があった際にセーブする
         private void SaveUserData()
         {
@@ -101,6 +107,7 @@ namespace ValorantUserChanger
             foreach (var detailUserData in _userDataTuples.Select(userDataTuple => new UserData.DetailUserData
             {
                 user_name = userDataTuple.userName,
+                password = userDataTuple.password,
                 guid = userDataTuple.guid
             }))
                 userData.user_data.Add(detailUserData);

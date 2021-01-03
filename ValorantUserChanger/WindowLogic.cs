@@ -28,7 +28,7 @@ namespace ValorantUserChanger
 
             var userData = um.GetUserData();
 
-            foreach (var (guid, userName, isFileExist) in userData)
+            foreach (var (guid, userName, password, isFileExist) in userData)
             {
                 var rb = new RadioButton
                 {
@@ -41,7 +41,8 @@ namespace ValorantUserChanger
                     Height = parentPanel.ActualWidth / 5,
                     Background = isFileExist ? new ImageBrush(new BitmapImage(new Uri(@"Resources/folder.png", UriKind.Relative))) : new ImageBrush(new BitmapImage(new Uri(@"Resources/folder4.png", UriKind.Relative))),
                     FontSize = parentPanel.ActualWidth / 40,
-                    Foreground = isFileExist ? Brushes.Black : Brushes.Red,
+                    //Foreground = isFileExist ? Brushes.Black : Brushes.Red,
+                    Foreground = password != "" ? Brushes.Black : Brushes.Red,
                     Content = userName.Length > 12 ? userName.Substring(0, 12) + "..." : userName
                 };
 
@@ -55,9 +56,10 @@ namespace ValorantUserChanger
             var userData = um.GetUserData();
             foreach (RadioButton child in parentPanel.Children)
             {
-                var (_, userName, isFileExist) = userData.First(v => v.guid == child.Tag.ToString());
+                var (_, userName, password, isFileExist) = userData.First(v => v.guid == child.Tag.ToString());
                 child.Content = userName;
-                child.Foreground = isFileExist ? Brushes.Black : Brushes.Red;
+                //child.Foreground = isFileExist ? Brushes.Black : Brushes.Red;
+                child.Foreground = password != "" ? Brushes.Black : Brushes.Red;
             }
         }
 
@@ -76,14 +78,16 @@ namespace ValorantUserChanger
             um.CopyUserLoginFile(tag);
         }
 
-        public void ChangeUserName(string guid, string newUserName)
+        public void ChangeUserData(string guid, string userName, string password)
         {
-            um.ChangeUserName(guid, newUserName);
+            um.ChangeUserData(guid, userName, password);
         }
 
-        public void StartGame()
+        public void StartGame(string tag)
         {
-            gm.StartGame();
+            var userName = um.GetUserNameFromGuid(tag);
+            var password = um.GetUserPasswordFromGuid(tag);
+            gm.StartGame(userName, password);
         }
 
         public void Logout()

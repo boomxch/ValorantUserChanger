@@ -25,7 +25,7 @@ namespace ValorantUserChanger
 
         private void UserDataSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            wl.ChangeUserName(Tag.ToString(), UserNameTextBox.Text);
+            wl.ChangeUserData(Tag.ToString(), UserNameTextBox.Text, PasswordTextBox.Password);
             Close();
         }
     }

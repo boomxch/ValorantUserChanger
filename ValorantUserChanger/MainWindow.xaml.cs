@@ -35,7 +35,17 @@ namespace ValorantUserChanger
             }
         }
 
-        private void StartGameButton_Click(object sender, RoutedEventArgs e) => wl.StartGame();
+        // private void StartGameButton_Click(object sender, RoutedEventArgs e) => wl.StartGame();
+
+        private void StartGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (RadioButton child in UserDataStackPanel.Children)
+            {
+                if (child.IsChecked == null || !(bool)child.IsChecked) continue;
+                wl.StartGame(child.Tag.ToString());
+                return;
+            }
+        }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e) => wl.Logout();
 
