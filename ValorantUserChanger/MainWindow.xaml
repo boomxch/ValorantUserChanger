@@ -64,7 +64,7 @@
             </RadioButton>
             <Border BorderThickness="1" BorderBrush="#19BFBFBF" Grid.Row="0"
                     Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled">
                     <WrapPanel x:Name="UserDataStackPanel" Background="#18FFFFFF"/>
                 </ScrollViewer>
             </Border>
